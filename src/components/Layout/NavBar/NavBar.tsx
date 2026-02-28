@@ -23,7 +23,7 @@ const Navbar = () => {
         <NavMenu className="hidden md:block" />
 
         <div className="flex items-center gap-4 md:gap-6">
-          {user ? (
+          {user?.token? (
             <Button
               variant="outline"
               className="rounded-full px-5 py-2 text-sm md:text-base border-[#1C6442] text-[#1C6442] hover:bg-[#1C6442] hover:text-white transition-colors"

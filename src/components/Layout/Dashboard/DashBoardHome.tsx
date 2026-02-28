@@ -1,68 +1,77 @@
-import TaskBoard from "@/components/modules/TaskManagement/TaskBoard";
-import TaskForm from "@/components/modules/TaskManagement/TaskForm";
-import { useState } from "react";
+import { lazy, Suspense } from "react"
+import { AppSidebar } from "@/components/app-sidebar"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
+import Layout from "../Layout"
+import DashboardHeader from "./components/DashboardHeader"
+import { DashboardSkeleton } from "./components/DashboardSkeleton"
+import { Button } from "@/components/ui/button"
+import { Plus } from "lucide-react"
 
-const DashBoardHome = () => {
-    const [tasks, setTasks] = useState([
-        {
-            id: "1",
-            title: "Design System Overhaul",
-            description: "Implementing the new evergreen gradient theme across all components.",
-            status: "in-progress" as const,
-            dueDate: "2026-03-05",
-            assignee: "Alex Chen",
-            priority: "high" as const,
-        },
-        {
-            id: "2",
-            title: "Auth Integration",
-            description: "Setting up AuthProvider and securing API routes with JWT cookies.",
-            status: "done" as const,
-            dueDate: "2026-02-28",
-            assignee: "Sarah Miller",
-            priority: "medium" as const,
-        },
-        {
-            id: "3",
-            title: "Client Feedback Loop",
-            description: "Gathering initial feedback on the task management module prototype.",
-            status: "todo" as const,
-            dueDate: "2026-03-10",
-            assignee: "John Doe",
-            priority: "low" as const,
-        },
-    ]);
 
-    const handleCreateTask = (data: any) => {
-        const newTask = {
-            ...data,
-            id: Math.random().toString(36).substr(2, 9),
-            assignee: "Current User",
-        };
-        setTasks([...tasks, newTask]);
-    };
+const StatsCards = lazy(() => import("./components/StatsCards"))
+const ProjectAnalytics = lazy(() => import("./components/ProjectAnalytics"))
+const TeamCollaboration = lazy(() => import("./components/TeamCollaboration"))
+const ProjectProgress = lazy(() => import("./components/ProjectProgress"))
+const TimeTracker = lazy(() => import("./components/TimeTracker"))
+const RightPanel = lazy(() => import("./components/RightPanel"))
 
-    return (
-        <div className="pt-24 px-6 md:px-12 max-w-screen-2xl mx-auto space-y-12">
-            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                <div>
-                    <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mt-4">
-                        Project <span className="text-[#1C6442] bg-gradient-to-r from-[#1C6442] to-[#2a8f5e] bg-clip-text text-transparent italic">Board</span>
-                    </h1>
-                    <p className="text-slate-500 mt-2 font-medium">Manage your progress with surgical precision and elegant design.</p>
+export default function DashboardHome() {
+  return (
+    <Layout hideNav hideFooter>
+      <SidebarProvider className="bg-[#f8fafc]/50">
+        <AppSidebar />
+        <SidebarInset className="bg-transparent overflow-hidden">
+          <DashboardHeader />
+
+          <main className="flex-1 overflow-y-auto p-4 md:p-8">
+            <Suspense fallback={<DashboardSkeleton />}>
+              <div className="max-w-7xl mx-auto space-y-8">
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+                    <p className="text-sm text-muted-foreground font-medium">
+                      Plan, prioritize, and accomplish your tasks with ease.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Button className="bg-[#1C6442] hover:bg-[#144d32] text-white rounded-xl h-11 px-6 gap-2 font-bold shadow-lg shadow-[#1C6442]/20">
+                      <Plus className="h-5 w-5" /> Add Project
+                    </Button>
+                    <Button variant="outline" className="border-border rounded-xl h-11 px-6 font-bold shadow-sm">
+                      Import Data
+                    </Button>
+                  </div>
                 </div>
-            </header>
 
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-                <div className="xl:col-span-3">
-                    <TaskBoard tasks={tasks} />
-                </div>
-                <div className="xl:col-span-1">
-                    <TaskForm onSubmit={handleCreateTask} />
-                </div>
-            </div>
-        </div>
-    );
-};
+                {/* Stats Grid */}
+                <StatsCards />
 
-export default DashBoardHome;
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:items-start">
+
+                  {/* Left & Middle Column */}
+                  <div className="lg:col-span-8 space-y-6">
+                    <ProjectAnalytics />
+                    <TeamCollaboration />
+                  </div>
+
+                  {/* Right Column */}
+                  <div className="lg:col-span-4 space-y-6">
+                    <RightPanel />
+                    <ProjectProgress />
+                    <TimeTracker />
+                  </div>
+
+                </div>
+              </div>
+            </Suspense>
+          </main>
+        </SidebarInset>
+      </SidebarProvider>
+    </Layout>
+  )
+}

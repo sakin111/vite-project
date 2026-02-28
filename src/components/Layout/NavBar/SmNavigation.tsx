@@ -27,8 +27,8 @@ export const SmNavigation = () => {
           className="w-[85%] sm:w-[70%] bg-white shadow-xl border-r border-gray-200 flex flex-col"
         >
 
-          <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4 px-4">
-            {/* logo needed todo */}
+          <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4 px-4 mt-2">
+            <span className="text-xl font-bold text-[#1C6442]">TaskMaster</span>
           </div>
 
 
