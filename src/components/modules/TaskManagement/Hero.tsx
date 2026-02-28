@@ -33,7 +33,7 @@ const Hero = () => {
                               }
                             </Button>
                             <Button size="lg" variant="outline" className="h-14 px-8 rounded-full font-bold border-slate-200 dark:border-slate-800 transition-all hover:bg-slate-100 dark:hover:bg-slate-900" asChild>
-                                <Link to="/register">Create Free Account</Link>
+                                <Link to="/login">Create Free Account</Link>
                             </Button>
                         </div>
                     </div>

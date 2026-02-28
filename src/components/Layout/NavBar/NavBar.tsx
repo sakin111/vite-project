@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="flex h-full items-center justify-between px-6 md:px-8">
 
         <Link to="/" className="flex-shrink-0 font-bold text-xl text-[#1C6442]">
-          TaskMaster
+          Donezo
         </Link>
 
         <NavMenu className="hidden md:block" />

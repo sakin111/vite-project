@@ -24,6 +24,7 @@ import {
 
 import { useAuth } from "@/lib/AuthContext"
 import { cn } from "@/lib/utils"
+import { Link } from "react-router"
 
 const menuItems = [
   { title: "Dashboard", icon: LayoutDashboard, url: "/dashboard", active: true },
@@ -46,12 +47,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" className="border-r border-border/50" {...props}>
       <SidebarHeader className="h-16 flex items-center px-6">
+     <Link to="/">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 bg-[#1C6442] rounded-lg flex items-center justify-center text-white">
+          <div className="h-8 w-8 bg-[#1C6442] rounded-lg flex items-center justify-start text-white">
             <Leaf className="h-5 w-5" />
           </div>
           {!isCollapsed && <span className="text-xl font-bold tracking-tight">Donezo</span>}
         </div>
+     </Link>
       </SidebarHeader>
 
       <SidebarContent className="px-3 pt-4">

@@ -1,75 +1,99 @@
-# React + TypeScript + Vite
+# 🌿 Donezo - Professional Task Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Donezo** is a premium, high-performance task management application designed for modern teams. It features a sophisticated dashboard, real-time analytics, and a seamless mobile-first user experience.
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## ✨ Key Features
 
-Note: This will impact Vite dev & build performances.
+### 📊 Professional Dashboard
+*   **Real-time Stats**: Track Total, Ended, Running, and Pending projects at a glance.
+*   **Weekly Analytics**: Custom-built, lightweight SVG bar charts for tracking project activity.
+*   **Progress Tracking**: Visual radial progress indicators for project completion rates.
 
-## Expanding the ESLint configuration
+### 🤝 Team Collaboration
+*   **User Management**: Monitor team members' tasks and their current status (Completed, In Progress, Pending).
+*   **Project Lists**: Organized project tracking with due dates and priority indicators.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🚀 Performance & UX
+*   **Zero-Jank Navigation**: Complete code-splitting using `React.lazy` and `Suspense` for blazing-fast transitions.
+*   **Optimized Data Fetching**: Powered by **TanStack Query** for efficient caching and background updates.
+*   **Mobile-First Design**: Fully responsive layout with a dynamic sidebar and fluid grid system.
+*   **Premium Aesthetics**: Custom Forest Green theme (`#1C6442`) built with **Shadcn UI** for a high-end feel.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+-   **Framework**: [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [Shadcn UI](https://ui.shadcn.com/) / [Radix UI](https://www.radix-ui.com/)
+-   **Data Fetching**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
+-   **API Client**: [Axios](https://axios-http.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Routing**: [React Router](https://reactrouter.com/)
+
+---
+
+## 🏗️ Getting Started
+
+### Prerequisites
+
+-   Node.js (v18 or higher)
+-   npm or pnpm or bun
+
+### Installation
+
+1.  **Clone the repository**
+    ```bash
+    git clone [your-repo-link]
+    cd vite-project
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Setup Environment Variables**
+    Create a `.env` file in the root directory (if required for API keys).
+
+4.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── components/
+│   ├── Layout/          # Layout & Navigation (Navbar, Sidebar, Footer)
+│   ├── ui/              # Shadcn UI reusable components
+│   └── modules/         # Feature-specific components
+├── Pages/               # Page components (Login, Blogs, About)
+├── service/             # API services & React Query hooks
+├── lib/                 # Utility functions & Shared contexts
+└── router/              # Routing configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛡️ Security
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Donezo implements secure JWT-based authentication with request interceptors to ensure all API calls are properly authorized.
+
+---
+
+## 📄 License
+
+This project is privately owned and developed for professional task management.
+
+---
+
+*Developed with ❤️ for productivity.*
